@@ -10,7 +10,7 @@ namespace BlazorApp1.Libraries.Storage
 {
     public interface IStorageServices
     {
-        IList<ProductModules> Products { get; };
+        IList<ProductModules> Products { get; }
 
     }
 }

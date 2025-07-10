@@ -1,0 +1,17 @@
+﻿@using BlazorApp1.Libraries.Products.Module
+
+
+<div class="card col-3 m-3" style=" width:250px; padding:0;">
+	<img src="/Images/bubbles-gumball-apron-black.jpg" style="width:100%" class="card-img-top" alt="...">
+	<div class="card-body">
+		<h5 class="card-title">@Product.Name</h5>
+		<p class="card-text">قیمت: @Product.Price</p>
+		<a href="#" class="btn btn-primary">جزئیات کالا</a>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public ProductModules? Product{ get; set; }
+	
+}

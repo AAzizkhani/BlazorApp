@@ -21,7 +21,7 @@ namespace BlazorApp1.Libraries.Products.Module
             }
         }
 
-        public string string FullUrl
+        public string  FullUrl
         {
             get
             {
