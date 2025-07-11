@@ -1,4 +1,5 @@
 ﻿using BlazorApp1.Libraries.Products.Module;
+using BlazorApp1.Libraries.ShoppingCart.Module;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,10 @@ namespace BlazorApp1.Libraries.Storage
     public interface IStorageServices
     {
         IList<ProductModules> Products { get; }
+        ShoppingCartModule ShoppingCart { get; }
+
+
+
 
     }
 }

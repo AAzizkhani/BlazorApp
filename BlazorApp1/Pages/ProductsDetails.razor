@@ -1,0 +1,114 @@
+﻿@page "/Product/{slug}"
+
+@using BlazorApp1.Libraries.Products.Module
+@using BlazorApp1.Libraries.Products
+@using BlazorApp1.Libraries.ShoppingCart
+
+@inject IProductServices _productServices
+@inject IShoppingCartService _shoppingCartService
+
+@if(product != null)
+{
+    <PageTitle>@product.Name</PageTitle>    
+}
+
+@if(product == null)
+{
+    <div class="alert alert-warning">
+        <h3>کالای مورد نظر یافت نشد</h3>
+    </div>
+}
+else
+{
+<div class="row">
+        <div class="col-3" style="padding-top:51px">
+        <img src="/Images/@product.ImageUrl" class="img-thumbnail" style="width:100%;"/>
+    </div>
+    <div class="col-9"> 
+        <h2>@product.Name</h2>
+        <hr />
+        <p class="text-success">قیمت:@product.Price $</p>
+            <div class="row m-3">
+                @if(_shoppingCartService.Count()>0)
+                {
+                    <p>کالا های موجود در سبد خرید : @_shoppingCartService.Count() می باشد</p>
+                }
+                <div style="width:11%">
+                    <input @bind="Quantity" type="number" placeholder="تعداد؟" class="form-control"/>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-outline-primary" @onclick="AddToCart">
+                        @if(_shoppingCartService.HasProducts(product.Sku))
+                        {
+                            <span>
+                               افزودن به سبد خرید
+                               @if(Quantity.HasValue)
+                                {
+                                    <text>@Quantity تا بیشتر!!</text>
+                                }
+                            </span>
+                        }
+                        else
+                        {
+                            <span>
+                            اولین خریدت رو انجام بده!!
+                            </span>
+                        }
+                    </button>
+                </div>
+        </div>
+        <ul>
+            @foreach(var pro in productList)
+            {
+                <li>
+                    <a href="@pro.FullUrl">
+                        @pro.Name
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+}
+
+@code {
+    public ProductModules? product{get; set;}
+    public IList<ProductModules>? productList { get; set; }
+
+    public int? Quantity { get; set; }
+
+    [Parameter]
+    public string? slug { get; set; }
+}
+
+@functions
+{
+    protected override void OnInitialized()
+    {
+        productList = _productServices.GetAll();
+        if (!string.IsNullOrEmpty(slug))
+        {
+            product = _productServices.GetProductBySlug(slug);
+        }
+
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (!string.IsNullOrEmpty(slug))
+        {
+            product = _productServices.GetProductBySlug(slug);
+        }
+        base.OnParametersSet();
+    }
+
+    public void AddToCart()
+    {
+        if (product != null)
+        {
+            _shoppingCartService.AddProduct(product, Quantity ?? 1);
+            Quantity = null;
+        }
+    }
+}

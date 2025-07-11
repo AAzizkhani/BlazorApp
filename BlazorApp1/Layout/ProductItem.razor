@@ -1,16 +1,60 @@
 ﻿@using BlazorApp1.Libraries.Products.Module
+@using BlazorApp1.Libraries.ShoppingCart
+
+@implements IProductAddToCart
+@inject IShoppingCartService _shoppingCartService
 
 
 <div class="card col-3 m-3" style=" width:250px; padding:0;">
-	<img src="/Images/bubbles-gumball-apron-black.jpg" style="width:100%" class="card-img-top" alt="...">
+	<img src="/Images/@Product.ImageUrl" style="width:100%" class="card-img-top" alt="...">
 	<div class="card-body">
-		<h5 class="card-title">@Product.Name</h5>
-		<p class="card-text">قیمت: @Product.Price</p>
-		<a href="#" class="btn btn-primary">جزئیات کالا</a>
+		<h5 class="card-title">
+			@Product.Name
+		</h5>
+		<p class="card-text">قیمت: @Product.Price $</p>
+		<div style="display: flex;flex-direction: column;justify-items: center;align-items: center;row-gap:8px">
+			<div>
+				<input @bind="Quantity" type="number" placeholder="تعداد؟" class="form-control" style="width:100%" />
+			</div>
+			<div style="width: 100%;">
+				<button class="btn btn-outline-success" @onclick="AddToCart" style="width:100%">
+					@if (_shoppingCartService.HasProducts(Product.Sku))
+					{
+						<span>
+							افزودن به سبد خرید
+							@if (Quantity.HasValue)
+							{
+								<text>@Quantity تا بیشتر!!</text>
+							}
+						</span>
+					}
+					else
+					{
+						<span>
+							اولین خریدت رو انجام بده!!
+						</span>
+					}
+				</button>
+			</div>
+			<div style="width:100%;margin-top:20px">
+				<a href="@Product.FullUrl" class="btn btn-primary" style="width:100%;">جزئیات کالا</a>
+			</div>
+		</div>
 	</div>
 </div>
 
 @code {
 	[Parameter]
-	public ProductModules? Product{ get; set; }
+	public ProductModules? Product { get; set; }
+	public int? Quantity { get; set; }
+}
+@functions{
+	public void AddToCart()
+	{
+		if (Product != null)
+		{
+			_shoppingCartService.AddProduct(Product, Quantity ?? 1);
+			Quantity = null;
+		}
+	}
 }

@@ -25,7 +25,7 @@ namespace BlazorApp1.Libraries.Products.Module
         {
             get
             {
-                return string.Format("/Product/{0}");
+                return string.Format("/Product/{0}" , Slug);
             }
         }
 
