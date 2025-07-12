@@ -1,12 +1,9 @@
 ﻿@using BlazorApp1.Libraries.Products
 @using BlazorApp1.Libraries.Products.Module
 
-
 @page "/"
 
 @inject IProductServices productServices
-
-
 
 @if (Products?.Any() ?? false)
 {

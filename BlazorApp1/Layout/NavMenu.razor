@@ -1,17 +1,13 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">فروشگاه کالا</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <NavLink class="nav-link" href="/">خانه</NavLink>
-            </li>
-            <li class="nav-item">
-                <NavLink class="nav-link" href="/Cart">سبد خرید</NavLink>
-            </li>
-        </ul>
-    </div>
-</nav>
+﻿<MudAppBar Class="appbar-z-top text-bg-light" Fixed="true" Elevation="10">
+    <MudIcon Class="text-danger" Icon="@Icons.Material.Filled.ShoppingBasket" Size="Size.Large" />
+    <a class="navbar-brand" href="#" style="font-family:'B Yekan';font-weight:800;color:crimson;font-size:30px">فروشگاه کالا</a>
+    <MudSpacer />
+    <NavLink class="nav-link" href="/">
+        <MudIcon Class="text-dark" Icon="@Icons.Material.Filled.Home" Size="Size.Medium" />
+    </NavLink>
+    <NavLink class="nav-link" href="/Cart">
+        <div style="padding-right:12px">
+            <MudIcon Class="text-dark" Icon="@Icons.Material.Filled.ShoppingCart" Size="Size.Medium" />
+        </div>
+    </NavLink>
+</MudAppBar>
