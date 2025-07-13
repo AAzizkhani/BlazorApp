@@ -1,0 +1,42 @@
+﻿<div style="padding-top:50px;padding-bottom:10px">
+<MudCarousel Class="mud-width-full" Style="height:200px;" AutoCycle="true" TData="object">
+    <BulletTemplate Context="selected">
+        <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon">
+            <span class="mud-icon-button-label">
+                <MudIcon Icon="@(selected? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Circle)" Color="@Color.Inherit" />
+            </span>
+        </div>
+    </BulletTemplate>
+    <PreviousButtonTemplate>
+        <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon">
+            <span class="mud-icon-button-label">
+                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.ArrowRight" Color="@Color.Inherit" />
+            </span>
+        </div>
+    </PreviousButtonTemplate>
+    <NextButtonTemplate>
+        <div Class="mud-button-root mud-icon-button mud-icon-button-color-inherit mud-ripple mud-ripple-icon">
+            <span class="mud-icon-button-label">
+                    <MudIcon Class="mud-ripple mud-ripple-icon mud-icon-button-size-medium" Icon="@Icons.Material.Rounded.ArrowLeft" Color="@Color.Inherit" />
+            </span>
+        </div>
+    </NextButtonTemplate>
+    <ChildContent>
+        <MudCarouselItem>
+            <div class="d-flex" style="height:100%;justify-content:center;">
+                    <MudImage Src="Images/dolores-compute-mug-black.jpg"/>
+            </div>
+        </MudCarouselItem>
+        <MudCarouselItem>
+            <div class="d-flex" style="height:100%;justify-content:center;">
+                    <MudImage Src="Images/dolores-compute-baseballhat-black.jpg"/>
+            </div>
+        </MudCarouselItem>
+        <MudCarouselItem>
+            <div class="d-flex" style="height:100%;justify-content:center;" >
+                    <MudImage Src="Images/rex-microcontrollers-tshirt-black.jpg"/>
+            </div>
+        </MudCarouselItem>
+    </ChildContent>
+</MudCarousel>
+</div>

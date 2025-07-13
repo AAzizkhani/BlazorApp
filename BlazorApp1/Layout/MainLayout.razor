@@ -1,8 +1,18 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavManager
 
 <Header/>
+@if (IsHome)
+{
+	<SlideShow/>
+}
 <div class="container">
 	@Body
 </div>
 <Footer />
+
+@code {
+	private bool IsHome => NavManager.ToBaseRelativePath(NavManager.Uri) == "";
+}
+
 

@@ -4,15 +4,16 @@
 @implements IProductAddToCart
 @inject IShoppingCartService _shoppingCartService
 
-
-<div class="card col-3 m-3" style=" width:250px; padding:0;">
-	<img src="/Images/@Product.ImageUrl" style="width:100%" class="card-img-top" alt="...">
-	<div class="card-body">
-		<h5 class="card-title">
-			@Product.Name
-		</h5>
-		<p class="card-text">قیمت: @Product.Price $</p>
-		<div style="display: flex;flex-direction: column;justify-items: center;align-items: center;row-gap:8px">
+<div style="width:300px;padding-bottom:50px">
+	<MudCard Class="elevation-25 bg-light rounded-top-5 m-10">
+		<MudImage Class="rounded-top-5" Src="@($"/Images/{Product.ImageUrl}")" Height="270" />
+		<MudCardContent>
+			<MudText Typo="Typo.h5">@Product.Name</MudText>
+			<MudText Typo="Typo.body2">قیمت: @Product.Price $</MudText>
+			<MudText Typo="Typo.body2"></MudText>
+		</MudCardContent>
+		<MudCardActions>
+			<div style="display:flex;flex-direction:column;justify-content:center;row-gap:5px;margin-right:10px;width:300px;">
 			<div>
 				<input @bind="Quantity" type="number" placeholder="تعداد؟" class="form-control" style="width:100%" />
 			</div>
@@ -21,7 +22,7 @@
 					@if (_shoppingCartService.HasProducts(Product.Sku))
 					{
 						<span>
-							افزودن به سبد خرید
+								افزودن به سبد خرید
 							@if (Quantity.HasValue)
 							{
 								<text>@Quantity تا بیشتر!!</text>
@@ -31,16 +32,17 @@
 					else
 					{
 						<span>
-							اولین خریدت رو انجام بده!!
+								اولین خریدت رو انجام بده!!
 						</span>
 					}
 				</button>
 			</div>
 			<div style="width:100%;margin-top:20px">
-				<a href="@Product.FullUrl" class="btn btn-primary" style="width:100%;">جزئیات کالا</a>
+					<a href="@Product.FullUrl" class="btn btn-primary" style="width:100%;">جزئیات کالا</a>
 			</div>
 		</div>
-	</div>
+		</MudCardActions>
+	</MudCard>
 </div>
 
 @code {
