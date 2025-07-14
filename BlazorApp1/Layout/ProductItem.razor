@@ -5,40 +5,16 @@
 @inject IShoppingCartService _shoppingCartService
 
 <div style="width:300px;padding-bottom:50px">
-	<MudCard Class="elevation-25 bg-light rounded-top-5 m-10">
-		<MudImage Class="rounded-top-5" Src="@($"/Images/{Product.ImageUrl}")" Height="270" />
+	<MudCard Class="elevation-25 bg-light rounded-4 m-10">
+		<MudImage Class="rounded-top-4" Src="@($"/Images/{Product.ImageUrl}")" Height="270" />
 		<MudCardContent>
-			<MudText Typo="Typo.h5">@Product.Name</MudText>
-			<MudText Typo="Typo.body2">قیمت: @Product.Price $</MudText>
-			<MudText Typo="Typo.body2"></MudText>
+			<MudText Typo="Typo.h5" Style="font-family:'B Yekan';font-weight:800;">@Product.Name</MudText>
+			<MudText Class="text-success" Typo="Typo.body2" Style="font-family:'B Yekan';font-weight:800; margin-top:6px">قیمت: @Product.Price $</MudText>
 		</MudCardContent>
 		<MudCardActions>
-			<div style="display:flex;flex-direction:column;justify-content:center;row-gap:5px;margin-right:10px;width:300px;">
-			<div>
-				<input @bind="Quantity" type="number" placeholder="تعداد؟" class="form-control" style="width:100%" />
-			</div>
-			<div style="width: 100%;">
-				<button class="btn btn-outline-success" @onclick="AddToCart" style="width:100%">
-					@if (_shoppingCartService.HasProducts(Product.Sku))
-					{
-						<span>
-								افزودن به سبد خرید
-							@if (Quantity.HasValue)
-							{
-								<text>@Quantity تا بیشتر!!</text>
-							}
-						</span>
-					}
-					else
-					{
-						<span>
-								اولین خریدت رو انجام بده!!
-						</span>
-					}
-				</button>
-			</div>
-			<div style="width:100%;margin-top:20px">
-					<a href="@Product.FullUrl" class="btn btn-primary" style="width:100%;">جزئیات کالا</a>
+		<div style="display:flex;flex-direction:column;justify-content:center;row-gap:10px;width:300px;">
+			<div style="width:100%;">
+					<MudButton Href="@Product.FullUrl" Variant="Variant.Filled" Class="bg-primary text-light rounded-5" style="font-family:'B Yekan';font-weight:800;width:100%">جزئیات کالا</MudButton>
 			</div>
 		</div>
 		</MudCardActions>

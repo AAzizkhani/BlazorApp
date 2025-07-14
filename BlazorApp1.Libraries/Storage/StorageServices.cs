@@ -27,6 +27,18 @@ namespace BlazorApp1.Libraries.Storage
             AddProduct(new ProductModules("DOLORES-COMPUTE-MUG", "I Compute, Therefore I Am Mug", 16, "rex-microcontrollers-apron-black.jpg"));
             AddProduct(new ProductModules("DOLORES-COMPUTE-TSHIRT", "I Compute, Therefore I Am T-shirt", 26, "rex-microcontrollers-baseballhat-black.jpg"));
             AddProduct(new ProductModules("REX-MICROCONTROLLERS-TSHIRT", "Great Microcontrollers Think Alike T-shirt", 26, "rex-microcontrollers-tshirt-black.jpg"));
+            AddProduct(new ProductModules("BUBBLES-GUMBALL", "A Gumball for Your Thoughts Baseball Hat", 29, "dolores-compute-mug-black.jpg"));
+            AddProduct(new ProductModules("BUBBLES-GUMBALL-A", "A Gumball for Your Thoughts Apron", 24, "bubbles-gumball-apron-black.jpg"));
+            AddProduct(new ProductModules("BUBBLES-BASEBALLHAT", "A Gumball for Your Thoughts Baseball Hat", 29, "dolores-compute-mug-black.jpg"));
+            AddProduct(new ProductModules("DOLORES-MUG", "I Compute, Therefore I Am Mug", 16, "rex-microcontrollers-apron-black.jpg"));
+
+
+
+
+
+
+
+
         }
         private void AddProduct(ProductModules product)
         {
